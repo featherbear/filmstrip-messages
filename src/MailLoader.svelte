@@ -2,6 +2,8 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
+  import { fade } from "svelte/transition";
+
   function close() {
     dispatch("destroy");
   }
@@ -42,7 +44,7 @@
   }
 </style>
 
-<div class="mailContainer">
+<div class="mailContainer" transition:fade={{ duration: 300 }}>
   <div class="mail">
     <div>
       <p>Hey :)</p>
