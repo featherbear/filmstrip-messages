@@ -1,11 +1,15 @@
 <script>
-	export let name;
+  export let name;
+  import Filmstrip from "./Filmstrip.svelte";
+
+  import MailLoader from "./MailLoader.svelte";
 </script>
 
 <style>
-	h1 {
-		color: purple;
-	}
+
 </style>
 
-<h1>Hello {name}!</h1>
+<Filmstrip />
+
+<Filmstrip />
+<MailLoader />
