@@ -2,11 +2,15 @@
   "version": 3,
   "file": "bundle.css",
   "sources": [
-    "../src/App.svelte"
+    "../src/MailLoader.svelte",
+    "../src/Filmstrip.svelte",
+    "../src/Tile.svelte"
   ],
   "sourcesContent": [
-    "<script>\n\texport let name;\n</script>\n\n<style>\n\th1 {\n\t\tcolor: purple;\n\t}\n</style>\n\n<h1>Hello {name}!</h1>\n"
+    "<script>\n  import { createEventDispatcher } from \"svelte\";\n  const dispatch = createEventDispatcher();\n\n  import { fade } from \"svelte/transition\";\n\n  function close() {\n    dispatch(\"destroy\");\n  }\n</script>\n\n<style>\n  .mailContainer {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index: 30;\n\n    background-color: white;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    text-align: center;\n  }\n\n  .mail {\n    background-color: red;\n    width: 90%;\n    height: 70%;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    border-radius: 8xpx;\n  }\n\n  button {\n    cursor: pointer;\n  }\n</style>\n\n<div class=\"mailContainer\" transition:fade={{ duration: 300 }}>\n  <div class=\"mail\">\n    <div>\n      <p>Hey :)</p>\n      <button on:click={close}>Close</button>\n    </div>\n  </div>\n\n</div>\n",
+    "<script>\n  import Tile from \"./Tile.svelte\";\n\n  let items = [1, 2, 3, 4, 5, 6];\n</script>\n\n<style>\n  .filmstrip {\n    float: left;\n    margin-right: 30px;\n    margin-bottom: 30px;\n\n    width: 200px;\n    background-color: rgb(241, 240, 232);\n    height: 100vh;\n    transform: rotate(-15deg);\n    overflow-y: scroll;\n    padding: 15px;\n\n    -webkit-box-shadow: 1px 3px 22px 0px rgba(0, 0, 0, 0.3);\n    -moz-box-shadow: 1px 3px 22px 0px rgba(0, 0, 0, 0.3);\n    box-shadow: 1px 3px 22px 0px rgba(0, 0, 0, 0.3);\n  }\n\n  .spacer:not(:first-child) {\n    margin-top: 15px;\n  }\n</style>\n\n<div class=\"filmstrip\">\n  {#each items as item}\n    <div class=\"spacer\">\n      <Tile />\n    </div>\n  {/each}\n</div>\n",
+    "<style>\ndiv {\n    width: 100%;\n    min-height: 150px;\n    background-color: red;\n    cursor: pointer;\n}\n\n</style>\n<div>\nB\n</div>"
   ],
   "names": [],
-  "mappings": "AAKC,EAAE,cAAC,CAAC,AACH,KAAK,CAAE,MAAM,AACd,CAAC"
+  "mappings": "AAYE,cAAc,cAAC,CAAC,AACd,QAAQ,CAAE,KAAK,CACf,GAAG,CAAE,CAAC,CACN,IAAI,CAAE,CAAC,CACP,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CACZ,OAAO,CAAE,EAAE,CAEX,gBAAgB,CAAE,KAAK,CAEvB,OAAO,CAAE,IAAI,CACb,WAAW,CAAE,MAAM,CACnB,eAAe,CAAE,MAAM,CAEvB,UAAU,CAAE,MAAM,AACpB,CAAC,AAED,KAAK,cAAC,CAAC,AACL,gBAAgB,CAAE,GAAG,CACrB,KAAK,CAAE,GAAG,CACV,MAAM,CAAE,GAAG,CAEX,OAAO,CAAE,IAAI,CACb,WAAW,CAAE,MAAM,CACnB,eAAe,CAAE,MAAM,CAEvB,aAAa,CAAE,IAAI,AACrB,CAAC,AAED,MAAM,cAAC,CAAC,AACN,MAAM,CAAE,OAAO,AACjB,CAAC;ACpCD,UAAU,eAAC,CAAC,AACV,KAAK,CAAE,IAAI,CACX,YAAY,CAAE,IAAI,CAClB,aAAa,CAAE,IAAI,CAEnB,KAAK,CAAE,KAAK,CACZ,gBAAgB,CAAE,IAAI,GAAG,CAAC,CAAC,GAAG,CAAC,CAAC,GAAG,CAAC,CACpC,MAAM,CAAE,KAAK,CACb,SAAS,CAAE,OAAO,MAAM,CAAC,CACzB,UAAU,CAAE,MAAM,CAClB,OAAO,CAAE,IAAI,CAEb,kBAAkB,CAAE,GAAG,CAAC,GAAG,CAAC,IAAI,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,CACvD,eAAe,CAAE,GAAG,CAAC,GAAG,CAAC,IAAI,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,CACpD,UAAU,CAAE,GAAG,CAAC,GAAG,CAAC,IAAI,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,AACjD,CAAC,AAED,sBAAO,KAAK,YAAY,CAAC,AAAC,CAAC,AACzB,UAAU,CAAE,IAAI,AAClB,CAAC;ACzBH,GAAG,cAAC,CAAC,AACD,KAAK,CAAE,IAAI,CACX,UAAU,CAAE,KAAK,CACjB,gBAAgB,CAAE,GAAG,CACrB,MAAM,CAAE,OAAO,AACnB,CAAC"
 }
