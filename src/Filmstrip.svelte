@@ -1,10 +1,24 @@
 <script>
   import Tile from "./Tile.svelte";
   import { fade } from "svelte/transition";
-  let items = [1, 2, 3, 4, 5, 6];
+  let items = [
+    {src: "images/aug-16-psst-its-camping-time-nocal-2560x1440.jpg.png"},
+    {src: "images/aug-16-psst-its-camping-time-nocal-2560x1440.jpg.png", content:
+    `
+    hellooo!
+    <img src="images/aug-16-psst-its-camping-time-nocal-2560x1440.jpg.png" />
+    `}
+
+
+  ];
+
+  import ContentLightbox from "./ContentLightbox.js";
+
+  function showLightbox(item) {
+    ContentLightbox.createLightbox({ data: item.content || item.src });
+  }
 
   export let rotation = 0;
-
 </script>
 
 <style>
@@ -35,7 +49,7 @@
   style={`transform: rotate(${rotation}deg); margin-right: ${200 * Math.abs(Math.sin(Math.abs(rotation)))}px`}>
   {#each items as item}
     <div class="spacer">
-      <Tile />
+      <Tile on:click={() => showLightbox(item)} src={item.src} />
     </div>
   {/each}
 </div>
