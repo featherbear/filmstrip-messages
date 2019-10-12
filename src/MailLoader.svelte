@@ -82,7 +82,7 @@
   }
 </style>
 
-<div class="mailContainer" transition:fade={{ duration: 300 }}>
+<div class="mailContainer" transition:fade={{ delay: 100, duration: 300 }}>
   <div class="mail centreStyle">
     <div class="content">
       <button on:click={close}>Open</button>
