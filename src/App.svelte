@@ -15,10 +15,12 @@
 
 </style>
 
-<Filmstrip />
 
-<Filmstrip />
 
 {#if showIntro}
   <MailLoader on:destroy={doHideIntro} />
+{:else}
+<Filmstrip />
+
+<Filmstrip />
 {/if}

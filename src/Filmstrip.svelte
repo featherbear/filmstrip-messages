@@ -1,6 +1,6 @@
 <script>
   import Tile from "./Tile.svelte";
-
+  import { fade } from "svelte/transition";
   let items = [1, 2, 3, 4, 5, 6];
 </script>
 
@@ -27,7 +27,7 @@
   }
 </style>
 
-<div class="filmstrip">
+<div class="filmstrip" transition:fade={{ duration: 500 }}>
   {#each items as item}
     <div class="spacer">
       <Tile />
