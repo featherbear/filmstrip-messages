@@ -40,10 +40,17 @@
     height: 90%;
 
     border-radius: 3px;
+
+    text-align: center;
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; */
   }
 
   :global(.content > *) {
     width: 100%;
+    max-height: 100%;
   }
 </style>
 
