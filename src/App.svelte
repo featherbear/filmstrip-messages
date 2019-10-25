@@ -5,6 +5,8 @@
 
   import MailLoader from "./MailLoader.svelte";
 
+  import Loader from "./Loader.svelte";
+
   let showIntro = false;
 
   function doHideIntro() {
@@ -17,15 +19,18 @@
     overflow-y: hidden;
     height: 100%;
 
-flex-basis: 200px;
+    flex-basis: 200px;
     display: flex;
   }
-  
+
   :global(.overflowContainer > *) {
-    flex-shrink: 0;   
+    flex-shrink: 0;
   }
+
+  
 </style>
 
+<Loader />
 {#if showIntro}
   <MailLoader on:destroy={doHideIntro} />
 {:else}
