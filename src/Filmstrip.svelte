@@ -51,7 +51,7 @@
 
 <div
   class="filmstrip"
-  transition:fade={{ duration: 500 }}
+  transition:fade={{ delay: 1000, duration: 800 }}
   style={`transform: rotate(${rotation}deg); margin-right: ${200 * Math.abs(Math.sin(Math.abs(rotation)))}px`}>
   {#each items as item}
     <div class="spacer">

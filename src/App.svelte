@@ -3,11 +3,9 @@
 
   import Filmstrip from "./Filmstrip.svelte";
 
-  import MailLoader from "./MailLoader.svelte";
-
   import Loader from "./Loader.svelte";
 
-  let showIntro = false;
+  let showIntro = true;
 
   function doHideIntro() {
     showIntro = false;
@@ -30,9 +28,8 @@
   
 </style>
 
-<Loader />
 {#if showIntro}
-  <MailLoader on:destroy={doHideIntro} />
+  <Loader on:destroy={doHideIntro} />
 {:else}
   <div class="overflowContainer">
     <Filmstrip rotation="20" />
