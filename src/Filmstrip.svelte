@@ -4,7 +4,7 @@
 
   import ContentLightbox from "./ContentLightbox.js";
   function showLightbox(item) {
-    ContentLightbox.createLightbox({ data: item.content || item.src });
+    ContentLightbox.createLightbox({ data: item.content || `<img src="${item.src}" />` });
   }
 
   export let items = [];
@@ -19,7 +19,6 @@
     width: 200px;
     background-color: rgb(241, 240, 232);
     height: 100vh;
-    /* transform: rotate(-15deg); */
     overflow-y: scroll;
     padding: 15px;
 
