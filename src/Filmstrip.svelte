@@ -1,29 +1,13 @@
 <script>
   import Tile from "./Tile.svelte";
   import { fade } from "svelte/transition";
-  let items = [
-    {src: "images/aug-16-psst-its-camping-time-nocal-2560x1440.jpg.png"},
-    {src: "images/aug-16-psst-its-camping-time-nocal-2560x1440.jpg.png", content:
-    `
-    hellooo!
-    <img src="images/aug-16-psst-its-camping-time-nocal-2560x1440.jpg.png" />
-    `}
-  ];
-
-  items = [...items, ...items];
-  items = [...items, ...items];
-
-  items = [...items, ...items];
-  items = [...items, ...items];
-  items = [...items, ...items];
-  items = [...items, ...items];
 
   import ContentLightbox from "./ContentLightbox.js";
-
   function showLightbox(item) {
     ContentLightbox.createLightbox({ data: item.content || item.src });
   }
 
+  export let items = [];
   export let rotation = 0;
 </script>
 

@@ -2,13 +2,13 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
-  import { fade } from "svelte/transition";
-
-  export let data;
-
   function close() {
     dispatch("destroy");
   }
+
+  import { fade } from "svelte/transition";
+
+  export let data;
 </script>
 
 <style>

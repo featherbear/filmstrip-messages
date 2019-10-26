@@ -1,44 +1,43 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
-
   import { fly, fade } from "svelte/transition";
 
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
   function close() {
     dispatch("destroy");
   }
+
+  // TODO: Check for javascript capability?
+
+  let imageElement;
 
   import SVGInjector from "svg-injector";
   // Do the injection
   import { onMount } from "svelte";
   onMount(() => {
-    SVGInjector(
-      document.querySelectorAll("img.inject-me"),
-      undefined,
-      function() {
-        document.getElementById("el_7lT4rIY3tJ0").addEventListener(
-          "mouseover",
-          function() {
-            document.querySelector("svg").classList.add("hov");
-            document.querySelectorAll("#el_0eRWAjOgY *").forEach(e => {
-              e.style.animationPlayState = "running";
-            });
-          },
-          { once: true }
-        );
-        document
-          .getElementById("el_S0iMzZ2Pc5_an_IvVquN_Ci")
-          .addEventListener("click", function() {
-            document.getElementById("el_AqJYz6K2xY").classList.add("fly");
-            close();
+    SVGInjector(imageElement, undefined, function() {
+      document.getElementById("el_7lT4rIY3tJ0").addEventListener(
+        "mouseover",
+        function() {
+          document.querySelector("svg").classList.add("hov");
+          document.querySelectorAll("#el_0eRWAjOgY *").forEach(e => {
+            e.style.animationPlayState = "running";
           });
-      }
-    );
+        },
+        { once: true }
+      );
+      document
+        .getElementById("el_S0iMzZ2Pc5_an_IvVquN_Ci")
+        .addEventListener("click", function() {
+          document.getElementById("el_AqJYz6K2xY").classList.add("fly");
+          close();
+        });
+    });
   });
 </script>
 
 <style>
-  #bg {
+  #loader {
     position: fixed;
     top: 0;
     left: 0;
@@ -48,7 +47,7 @@
     z-index: 20;
   }
 
-  #container {
+  #loaderContainer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,17 +56,17 @@
     height: 100%;
   }
 
-  #container .content {
+  #loaderContainer .content {
     border-radius: 50%;
     width: 300px;
     height: 300px;
     background-color: darkgrey;
   }
 
-  #container .content :global(svg) {
+  #loaderContainer .content :global(svg) {
     transition: transform 0.7s ease-out;
   }
-  #container .content :global(svg.hov) {
+  #loaderContainer .content :global(svg.hov) {
     transform: translateY(15px);
   }
 
@@ -80,6 +79,7 @@
     transform: translateY(-10px);
   }
 
+  /* Fly on click */
   :global(svg) #el_AqJYz6K2xY {
     transition: transform 0.7s;
   }
@@ -88,10 +88,14 @@
   }
 </style>
 
-<div id="bg" transition:fade={{ delay: 800, duration: 400 }}>
-  <div id="container">
+<div id="loader" transition:fade={{ delay: 800, duration: 400 }}>
+  <div id="loaderContainer">
     <div class="content" transition:fly={{ y: 200, duration: 1600 }}>
-      <img class="inject-me" src="messages_anim.svg" />
+      <img
+        class="inject-me"
+        src="messages_anim.svg"
+        alt=""
+        bind:this={imageElement} />
     </div>
   </div>
 </div>
