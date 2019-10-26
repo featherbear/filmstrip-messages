@@ -7,7 +7,7 @@
   import data from "./data.json";
 
   function rand() {
-    let maxAngle = 20;
+    let maxAngle = 15;
     return Math.random() * maxAngle - maxAngle/2;
   }
 </script>
