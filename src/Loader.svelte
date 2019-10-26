@@ -92,7 +92,6 @@
   <div id="loaderContainer">
     <div class="content" transition:fly={{ y: 200, duration: 1600 }}>
       <img
-        class="inject-me"
         src="messages_anim.svg"
         alt=""
         bind:this={imageElement} />

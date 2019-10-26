@@ -1,15 +1,10 @@
 <script>
-  export let name;
-
   import Filmstrip from "./Filmstrip.svelte";
-
   import Loader from "./Loader.svelte";
 
   let showIntro = true;
 
-  function doHideIntro() {
-    showIntro = false;
-  }
+  import data from "./data.json"
 </script>
 
 <style>
@@ -24,18 +19,14 @@
   :global(.overflowContainer > *) {
     flex-shrink: 0;
   }
-
-  
 </style>
 
 {#if showIntro}
-  <Loader on:destroy={doHideIntro} />
+  <Loader on:destroy={() => (showIntro = false)} />
 {:else}
   <div class="overflowContainer">
-    <Filmstrip rotation="20" />
-    <Filmstrip rotation="-8" />
-    <Filmstrip rotation="3" />
-    <Filmstrip rotation="-1" />
-
+    {#each data as items}
+      <Filmstrip {items} />
+    {/each}
   </div>
 {/if}
