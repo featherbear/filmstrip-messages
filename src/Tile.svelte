@@ -6,10 +6,10 @@
   .tile {
     width: 100%;
     min-height: 150px;
-    /* background-color: red; */
     cursor: pointer;
 
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
 
     transform: scale(0.98);
     transition: transform 0.2s;
