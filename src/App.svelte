@@ -4,7 +4,12 @@
 
   let showIntro = true;
 
-  import data from "./data.json"
+  import data from "./data.json";
+
+  function rand() {
+    let maxAngle = 20;
+    return Math.random() * maxAngle - maxAngle/2;
+  }
 </script>
 
 <style>
@@ -26,7 +31,7 @@
 {:else}
   <div class="overflowContainer">
     {#each data as items}
-      <Filmstrip {items} />
+      <Filmstrip {items} rotation={rand()} />
     {/each}
   </div>
 {/if}
